@@ -69,6 +69,9 @@ class SurfaceGetter():
 
     def get_file(self, alpha):
         locations = [os.path.expanduser('~/.local/'), '/usr/', '/app']
+        print(os.environ.get("VIRTUAL_ENV"))
+        if "VIRTUAL_ENV" in os.environ:
+            locations.insert(0, os.environ["VIRTUAL_ENV"])
         for prefix in locations:
             mixpath = os.path.join(prefix, self.url)
             image = None
